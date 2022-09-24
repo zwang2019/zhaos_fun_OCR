@@ -12,12 +12,14 @@ import time
 # pyautogui.displayMousePosition()
 
 # setting pytesseract
+# download tesseract from: https://github.com/UB-Mannheim/tesseract/wiki
 pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
 
-def grabscreen2txt():
+
+def grab_card_no():
     shot = ImageGrab.grab(bbox=(512, 534, 888, 560))
-    #  二值化
-    #  自定义灰度界限，大于这个值为黑色，小于这个值为白色
+    #  Binary
+    #  Threshold = 160
     threshold = 160
     table = []
     for i in range(256):
@@ -26,13 +28,12 @@ def grabscreen2txt():
         else:
             table.append(0)
     Img = shot.convert('L')
-    newshot=Img.point(table,'1')
-    newshot.save('1.png')
-    str1=pytesseract.image_to_string(newshot)
+    newshot = Img.point(table,'1')
+    str1 = pytesseract.image_to_string(newshot)
     return str1
 
 
 while True:
     time.sleep(1)
-    output = grabscreen2txt()
+    output = grab_card_no()
     print(output)
