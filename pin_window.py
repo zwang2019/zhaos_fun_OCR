@@ -19,8 +19,8 @@ root.wm_attributes('-topmost',1)
 root.wm_attributes('-transparentcolor', TRANSCOLOUR)
 
 # window size and title
-root.geometry('388x33+500+500')
-root.title('Scan CARD No. Here:')
+root.geometry('150x60+995+482')
+root.title('Scan PIN No. Here:')
 
 # canvas?
 canvas = Canvas(root)
