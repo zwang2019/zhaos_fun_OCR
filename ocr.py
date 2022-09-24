@@ -15,8 +15,10 @@ import time
 # download tesseract from: https://github.com/UB-Mannheim/tesseract/wiki
 pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
 
-card_no = (533, 568, 888, 595)
-pin_no = (1024, 526, 1104, 548)
+card_no = (550, 570, 888, 592)
+pin_no = (1024, 526, 1115, 560)
+
+debug = True
 
 def grab_no(num):
     shot = ImageGrab.grab(bbox=num)
@@ -49,6 +51,11 @@ while loop_flag:
     while card_no_flag:
         time.sleep(0.75)
         captured_card_no = grab_no(card_no)
+        captured_card_no = captured_card_no.strip()
+        if debug is True:
+            print(captured_card_no)
+            print(captured_card_no[:4])
+            print(len(captured_card_no))
         if captured_card_no[:4] == '5021' and len(captured_card_no) == 19:
             user_res = pyautogui.confirm(text='Captured card number is ' + captured_card_no, title='Confirmation', buttons=['YES', 'NO'])
             if user_res == 'YES':
@@ -60,6 +67,9 @@ while loop_flag:
     while pin_no_flag:
         time.sleep(0.75)
         captured_pin_no = grab_no(pin_no)
+        captured_pin_no = captured_pin_no.strip()
+        if debug is True:
+            print(captured_pin_no)
         if captured_pin_no.isdigit() and len(captured_pin_no) == 4:
             user_res_2 = pyautogui.confirm(text='Captured pin number is ' + captured_pin_no, title='Confirmation', buttons=['YES', 'NO'])
             if user_res_2 == 'YES':
