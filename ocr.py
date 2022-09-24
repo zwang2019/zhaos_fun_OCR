@@ -54,8 +54,6 @@ while loop_flag:
         captured_card_no = captured_card_no.strip()
         if debug is True:
             print(captured_card_no)
-            print(captured_card_no[:4])
-            print(len(captured_card_no))
         if captured_card_no[:4] == '5021' and len(captured_card_no) == 19:
             user_res = pyautogui.confirm(text='Captured card number is ' + captured_card_no, title='Confirmation', buttons=['YES', 'NO'])
             if user_res == 'YES':
