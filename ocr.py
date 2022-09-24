@@ -81,7 +81,7 @@ while loop_flag:
     f.close()
 
     # query user exit or not
-    user_res_3 = pyautogui.confirm(text='Continue Scanning? ' + captured_pin_no, title='Confirmation', buttons=['Continue', 'Exit'])
+    user_res_3 = pyautogui.confirm(text='Continue Scanning?', title='Confirmation', buttons=['Continue', 'Exit'])
     if user_res_3 == 'Exit':
         loop_flag = False
 
